@@ -21,4 +21,12 @@ function Application(props) {
    </div>
   );
 }
+
+Application.propTypes = {
+  title: React.PropTypes.string,
+};
+
+Application.defaultProps = {
+  title: "Scoreboard",
+}
 ReactDOM.render(<Application title="My Scoreboard"/>, document.getElementById('container'));
