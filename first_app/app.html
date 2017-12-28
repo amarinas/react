@@ -25,15 +25,15 @@
 
   </head>
   <body>
-    <div id="container">
-
-    </div>
+    <div id="container"></div>
     <script type="text/babel">
-      ReactDOM.render(
-        <h1>Sherlock Holmes!</h1>,
-        document.querySelector("#container")
+    var destination =   document.querySelector("#container");
+      ReactDOM.render(React.createElement(
+        "h1",
+        null,
+        "Batman"
+      ), destination);
 
-      );
 
     </script>
   </body>
