@@ -4,21 +4,27 @@
     <meta charset="utf-8">
     <title>Componets</title>
     <script crossorigin src="https://unpkg.com/react@16/umd/react.development.js"></script>
-    <script  crossorigin src="https://unpkg.com/react-dom@16/umd/react-dom.development.js"></script>
+    <script crossorigin src="https://unpkg.com/react-dom@16/umd/react-dom.development.js"></script>
+    <script crossorigin src="https://cdn.jsdelivr.net/npm/create-react-class@15.6.2/create-react-class.min.js"></script>
     <script src="https://unpkg.com/babel-standalone@6.15.0/babel.min.js"></script>
   </head>
   <body>
     <div id="container"></div>
     <script type="text/babel">
 
-      class HelloWorld extends React.Componet{
-        render(){
-          return <p>Hello, Componentized world!</p>
+
+      let HelloWorld = createReactClass({
+        render: function(){
+          return(
+            <p> Hello, componets world {this.props.greetTarget}!</p>
+          );
         }
-      }
+      });
+
       ReactDOM.render(
         <div>
-          <HelloWorld/>
+          <HelloWorld greetTarget="batman" />
+          <HelloWorld greetTarget="simon" />
         </div>,
         document.querySelector("#container")
       );
