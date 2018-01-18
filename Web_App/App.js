@@ -88,7 +88,7 @@ var App = React.createClass({
   },
 
   searchForAddress(address){
-    var self = this
+    var self = this;
 
     // We will use GMaps' geocode functionality,
     // which is built on top of the Google Maps API
@@ -114,7 +114,25 @@ var App = React.createClass({
   },
 
   render(){
-    
+
+    return (
+      <div>
+          <h1>Your Google Maps Locations</h1>
+
+          <Search onSearch={this.searchForAddress} />
+
+          <Map lat={this.state.mapCoordinates.lat} lng={this.state.mapCoordinates.lng} />
+
+          <CurrentLocation address={this.state.currentAddress}
+                favorite={this.isAddressInFavorites(this.state.currentAddress)}
+                onFavoriteToggle={this.toggleFavorite} />
+
+          <LocationList location={this.state.favorites} activeLocationAddress={this.state.currentAddress}
+                onClick={this.searchForAddress} />
+      </div>
+    );
   }
 
-})
+});
+
+module.exports = App;
