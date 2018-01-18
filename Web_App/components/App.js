@@ -94,7 +94,7 @@ var App = React.createClass({
     // which is built on top of the Google Maps API
     GMaps.geocode({
       address: address,
-      callback: fucntion(results, status){
+      callback: function(results, status){
 
         if(status !== 'OK') return;
 
