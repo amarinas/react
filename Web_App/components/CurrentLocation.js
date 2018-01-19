@@ -13,6 +13,7 @@ var CurrentLocation = React.createClass({
     if(this.props.favorite){
       starClassName = "glyphicon glyphicon-star";
     }
+
     return(
       <div className="col-xs-12 col-md-6 col-md-offset-3 current-location">
             <h4 id="save-location">{this.props.address}</h4>
