@@ -30,7 +30,7 @@ var Map = React.createClass({
         });
         //Adding a maker to the location we are showing
 
-        map.addMaker({
+        map.addMarker({
           lat: this.props.lat,
           lng: this.props.lng
         });

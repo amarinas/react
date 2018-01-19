@@ -1,4 +1,5 @@
 var React = require('react');
+var LocationItem = require('./LocationItem');
 var moment = require('moment');
 
 var LocationItem = React.createClass({
@@ -13,14 +14,14 @@ var LocationItem = React.createClass({
         var cn = "list-group-item";
 
         if(this.props.active){
-          cd += " active-location";
+          cn += " active-location";
         }
 
         return (
             <a className={cn} onClick={this.handleClick}>
                   {this.props.address}
-                  <span className="createAt">{ moment(this.props.timestamp).fromNow() }</span>
-                  <span className="glyphicon-menu-right"></span>
+                  <span className="createdAt">{ moment(this.props.timestamp).fromNow() }</span>
+                  <span className="glyphicon glyphicon-menu-right"></span>
 
             </a>
         )

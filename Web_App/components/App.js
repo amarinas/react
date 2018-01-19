@@ -20,7 +20,7 @@ var App = React.createClass({
       favorites: favorites,
       currentAddress: 'Paris, France',
       mapCoordinates:{
-        lat: 49.856614,
+        lat: 48.856614,
         lng: 2.3522219
       }
     };
@@ -98,7 +98,7 @@ var App = React.createClass({
 
         if(status !== 'OK') return;
 
-        var latlng = result[0].geometry.location;
+        var latlng = results[0].geometry.location;
 
         self.setState({
           currentAddress: results[0].formatted_address,
@@ -127,7 +127,7 @@ var App = React.createClass({
                 favorite={this.isAddressInFavorites(this.state.currentAddress)}
                 onFavoriteToggle={this.toggleFavorite} />
 
-          <LocationList location={this.state.favorites} activeLocationAddress={this.state.currentAddress}
+          <LocationList locations={this.state.favorites} activeLocationAddress={this.state.currentAddress}
                 onClick={this.searchForAddress} />
       </div>
     );

@@ -22,8 +22,8 @@ render(){
 
   return(
     <div className="list-group col-xs-12 col-md-6 col-md-offset-3">
-          <span className="list-group-item active"> Saved Location</span>
-          {location}
+          <span className="list-group-item active"> Saved Locations</span>
+          {locations}
     </div>
   )
 }

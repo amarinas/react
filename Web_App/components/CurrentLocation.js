@@ -15,7 +15,7 @@ var CurrentLocation = React.createClass({
     }
     return(
       <div className="col-xs-12 col-md-6 col-md-offset-3 current-location">
-            <h4 id="save-location">{this.prop.address}</h4>
+            <h4 id="save-location">{this.props.address}</h4>
             <span className={starClassName} onClick={this.toggleFavorite} aria-hidden="true"></span>
       </div>
     );
