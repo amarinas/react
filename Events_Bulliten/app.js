@@ -1,16 +1,20 @@
 new Vue({
   //we want to target the div with an id of 'events'
-  el: '#events'
+  el: '#events',
 
   //Here we can register any values or collection that hold data
   //for the application
-  data:{
+  data: {
     event:{ name: '', description: '', date: ''},
     events: []
   },
 
   //anything within the ready function will run when the application loads
-  ready: function(){},
+  ready: function(){
+    //When the application loads, we want to call the method that initializes
+    //some data
+    this.fetchEvents();
+  },
 
   //methods we want to use in our application are registered Here
   methods: {
@@ -35,9 +39,11 @@ new Vue({
           name: 'SXSW',
           description: 'Music festival in TX',
           date: '2016-03-10'
-        },
+        }
 
       ];
+      //$set is a convenience method provided by vue that is similar to pushing
+      //data onto an array
       this.$set('events', events);
     },
 
@@ -46,6 +52,12 @@ new Vue({
       if(this.event.name){
         this.events.push(this.event);
         this.event = {name: '', description: '', date: ''};
+      }
+    },
+
+    deleteEvent: function(index){
+      if(confirm("Are you sure you want to delete this event?")){
+        this.events.$remove(index);
       }
     }
   }
