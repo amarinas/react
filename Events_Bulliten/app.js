@@ -57,7 +57,7 @@ new Vue({
 
     deleteEvent: function(index){
       if(confirm("Are you sure you want to delete this event?")){
-        this.events.$remove(index);
+        this.events.splice(index, 1);
       }
     }
   }

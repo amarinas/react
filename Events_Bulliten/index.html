@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <title> Vue </title>
   <!-- CSS -->
-  <link rel="stylesheet" href="node_modules/bootstrap/dist/css/bootstrap.min.css">
+<link rel="stylesheet" href="node_modules/bootstrap/dist/css/bootstrap.min.css">
 
 </head>
 <body>
@@ -62,7 +62,7 @@
 
           <p class="list-group-item-text" v-if="event.description">{{event.description}}</p>
 
-          <button class="btn btn-xs btn-danger" v-on:click="deleteEvent($index)">Delete</button>
+          <button class="btn btn-xs btn-danger" v-on:click="deleteEvent(event)">Delete</button>
         </a>
 
       </div>
