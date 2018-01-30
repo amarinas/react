@@ -34,16 +34,38 @@ class App extends Component {
   render() {
     return (
       <div className="App">
-        <header className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <h1 className="App-title">Welcome to React</h1>
-        </header>
-        <p className="App-intro">
-          To get started, edit <code>src/App.js</code> and save to reload.
-        </p>
+      <CloudinaryContext cloudName="dtli5s6n8">
+        <div id="imageDemoContainer">
+          <div id="mainImage">
+            <ImageTransformations
+                width="600"
+                rgb={rgb}
+                selectedShirt={this.state.selectedShirt}
+                text={this.state.text} />
+          </div>
+          <div ud="imageThumbs">
+            <ul id="thumbs">
+                {this.state.shirt.map(thumb => {
+                  return (
+                    <li className={thumb.main === this.state.selectedShirt.main ? 'active': ''} onClick={this.selectedShirt.bind(this, thumb)} key={thumb.id}>
+                        {/*<Image publicId={thumb.main}>*/}
+                            {/*<Transformation width="75" crop="scale" />*/}
+                        {/*<Image>*/}
+                        <ImageTransformations
+                            width = "75"
+                            rgb={rgb}
+                            selectedShirt={thumb}
+                            text={' '} />
+                    </li>
+                  )
+                })}
+          </ul>
+        </div>
       </div>
-    );
-  }
+    </CloudinaryContext>
+  </div>
+);
+}
 }
 
 export default App;
