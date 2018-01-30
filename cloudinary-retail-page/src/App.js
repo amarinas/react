@@ -1,9 +1,8 @@
 import React, { Component } from 'react';
 import { Image, CloudinaryContext, Transformation} from 'cloudinary-react';
-import logo from './logo.svg';
+// import logo from './logo.svg';
 import './App.css';
-import { SketchPicker } from'react-color';
-
+import { SketchPicker } from 'react-color';
 
 const ImageTransformations = ({width, rgb, selectedShirt, text}) => {
   return (
@@ -71,7 +70,7 @@ class App extends Component {
             <ul id="thumbs">
                 {this.state.shirt.map(thumb => {
                   return (
-                    <li className={thumb.main === this.state.selectedShirt.main ? 'active': ''} onClick={this.selectedShirt.bind(this, thumb)} key={thumb.id}>
+                    <li className={thumb.main === this.state.selectedShirt.main ? 'active': ''} onClick={this.selectShirt.bind(this, thumb)} key={thumb.id}>
                         {/*<Image publicId={thumb.main}>*/}
                             {/*<Transformation width="75" crop="scale" />*/}
                         {/*<Image>*/}
