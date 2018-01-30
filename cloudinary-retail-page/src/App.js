@@ -9,10 +9,11 @@ const ImageTransformations = ({width, rgb, selectedShirt, text}) => {
     <Image publicId={selectedShirt.main+'.jpg'}>
         <Transformation width={width} crop="scale" />
         <Transformation effect={'red:'+((-1+rgb.r/255)*100).toFixed(0)} />
-        <Transformation effect={'blue'+((-1+rgb.b/255)*100).toFixed(0)} />
-        <Transformation effect={'green'+((-1+rgb.g/255)*100).toFixed(0)} />
+        <Transformation effect={'blue:'+((-1+rgb.b/255)*100).toFixed(0)} />
+        <Transformation effect={'green:'+((-1+rgb.g/255)*100).toFixed(0)} />
         <Transformation underlay={selectedShirt.underlay} flags="relative" width="1.0" />
-        <Transformation underlay={selectedShirt.underlay} flags="relative" width="1.0" />
+        <Transformation overlay={selectedShirt.overlay} flags="relative" width="1.0" />
+        <Transformation overlay={'text:Roboto_30:'+text} flags="relative" gravity="center" />
     </Image>
   );
 };
@@ -38,6 +39,10 @@ class App extends Component {
     //Updates color
     this.setState({background:color}, _ => this.forceUpdate());
   };
+
+  handleTextChange(event){
+    this.setState({text: event.target.value}, _ => this.forceUpdate())
+  }
 
   selectShirt(thumb){
     this.setState({selectedShirt:thumb}, _ => this.forceUpadate())
@@ -65,7 +70,7 @@ class App extends Component {
                 rgb={rgb}
                 selectedShirt={this.state.selectedShirt}
                 text={this.state.text} />
-          </div>
+      </div>
           <div id="imageThumbs">
             <ul id="thumbs">
                 {this.state.shirt.map(thumb => {
@@ -84,6 +89,19 @@ class App extends Component {
                 })}
           </ul>
         </div>
+      </div>
+      <div id="demoInputContainer">
+          <div className="inputSelections">
+              <h2> Shirt Color: </h2>
+              <SketchPicker
+                  color={this.state.background.hex }
+                  onChangeComplete= {this.handleColorChange.bind(this) }
+                  />
+            </div>
+            <div className ="inputSelections">
+            <h2>Text: </h2>
+            <input className="form-control" type="email" placeholder="Enter Text" value={this.state.text} onChange={this.handleTextChange.bind(this)} />
+            </div>
       </div>
     </CloudinaryContext>
   </div>
