@@ -63,17 +63,60 @@ import Cell from './Cell.vue'
         }
       },
 
-      methods: {
-        strike(){
-          if( ! this.frozen){
-            //gets either X or O from the Grid components
-            this.mark = this.$parent.activePlayer
+      computed: {
+        //help property to get the non-active player
 
-            this.frozen = true
+        nonActivePlayer (){
+              if(this.activePlayer === 'O'){
+                    return 'X'
+              }
+              return 'O'
+        }
+      },
 
-            // fires an event to notify the Grid component that a mark is placed
-            Event.$emit('strike', this.name)
+      watch: {
+        //watches for change in the value of gameStatus and changes the status
+        // message and color accordingly
+
+        gameStatus(){
+            if (this.gameStatus === 'win'){
+                  this.gameStatusColor = 'statusWin'
+                  return
+            }else if  (this.gameStatus === 'draw'){
+                    this.gameStatusColor = 'statusDraw'
+                    return
+            }
+                    this.gameStatusMessage = `${this.activePlayer}'s turn`
+        }
+      },
+
+      methods : {
+        //changes the active player to the non-active player with the help of the nonActivePlayer computed property
+        changePlayer (){
+              this.activePlayer = this.nonActivePlayer
+        },
+
+        //checks for possible win conditions from the data
+
+        checkForWin (){
+          for (let i =0; i < this.winConditions.length; i++){
+            //gets a single condition wc from the whole array
+            let wc = this.winConditions[i]
+            let cells = this.cells
+
+            //compares 3 cell values based on the cells in the condition
+            if(this.areEqual(cells[ws[0]], cells[ws[1]], cells[ws[2]])){
+              return true
+            }
           }
+          return false
+        },
+
+        gameIsWon(){
+          //fires win event for the app component to change the score
+          Event.$emit('win', this.activePlayer)
+
+          
         }
       }
 
