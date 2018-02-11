@@ -116,10 +116,69 @@ import Cell from './Cell.vue'
           //fires win event for the app component to change the score
           Event.$emit('win', this.activePlayer)
 
-          
-        }
-      }
+          //sets the game status message
+          this.gameStatusMessage = `${this.activePlayer} Wins !`
 
+          //fires an event for the Cell to freeze
+          Event.$emit('freeze')
+
+          //sets the status to wins
+          return 'win'
+
+
+        },
+
+        // returns the game status to the gameStatus property
+        changeGameStatus(){
+                if( this.checkForWin()){
+                      return this.gameIsWon()
+                // checks if the game is still not won and all cells are filled
+
+              }else if ( his.moves === 9){
+                      //sets the status to draw
+                      return 'draw'
+              }
+              //sets the status to turn
+              return 'turn'
+        },
+
+        // helper function for comparing cell values
+        areEqual(){
+          let len = arguments.length;
+
+          //loops through each value and compares them with an empty string and for enequality
+
+          for (let i =1; i < len; i++){
+            if (arguments[i] === '' || arguments[i] !== arguments[i-1])
+                return false;
+          }
+          return true;
+        }
+      },
+      created() {
+        //listens for a strike made by the user on cell
+        // it is called by the Cell Component
+
+        Event.$on('strike', (cellNumber) => {
+                //sets either X or O in the clicked cell of the cells array
+                this.cells[cellNumber] = this.nonActivePlayer
+
+                //increments the number of moves
+                this.moves++
+
+                //stores the game status by calling te changeGameStatus methods
+                this.gameStaus = this.changeGameStatus()
+
+                this.changePlayer()
+        })
+
+                //listens for a restart button press
+                // the data of the component is reinitialized
+                //it is called by the app component
+        Event.$on('gridReset', ()=>{
+                Object.assign(this.$data, this.$options.data())
+        })
+      }
 
     }
 </script>
