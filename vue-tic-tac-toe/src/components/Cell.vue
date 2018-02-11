@@ -13,6 +13,29 @@
               //holds either X or O to be displayed in the td
               mark: ''
         }
+      },
+      methods: {
+        strike(){
+          if( ! this.frozen){
+            //gets either X or O from the Grid components
+            this.mark = this.$parent.activePlayer
+
+            this.frozen = true
+
+            // fires an event to notify the Grid component that a mark is placed
+            Event.$emit('strike', this.name)
+          }
+        }
+      },
+
+      created( {
+        Event.$on('clearCell', () => {
+                this.mark = ''
+
+                this.frozen =false
+        })
+
+        Event.$on('freeze', () => this.frozen = true)
       }
     }
 </script>
