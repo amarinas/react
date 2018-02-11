@@ -90,7 +90,7 @@ import Cell from './Cell.vue'
         }
       },
 
-      methods : {
+      methods: {
         //changes the active player to the non-active player with the help of the nonActivePlayer computed property
         changePlayer (){
               this.activePlayer = this.nonActivePlayer
@@ -105,7 +105,7 @@ import Cell from './Cell.vue'
             let cells = this.cells
 
             //compares 3 cell values based on the cells in the condition
-            if(this.areEqual(cells[ws[0]], cells[ws[1]], cells[ws[2]])){
+            if(this.areEqual(cells[wc[0]], cells[wc[1]], cells[wc[2]])){
               return true
             }
           }

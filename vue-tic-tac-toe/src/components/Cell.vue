@@ -28,7 +28,7 @@
         }
       },
 
-      created( {
+      created() {
         Event.$on('clearCell', () => {
                 this.mark = ''
 
