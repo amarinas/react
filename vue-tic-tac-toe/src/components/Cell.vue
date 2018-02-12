@@ -32,7 +32,7 @@
         Event.$on('clearCell', () => {
                 this.mark = ''
 
-                this.frozen =false
+                this.frozen = false
         })
 
         Event.$on('freeze', () => this.frozen = true)

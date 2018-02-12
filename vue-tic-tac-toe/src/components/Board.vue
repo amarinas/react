@@ -81,9 +81,14 @@ import Cell from './Cell.vue'
         gameStatus(){
             if (this.gameStatus === 'win'){
                   this.gameStatusColor = 'statusWin'
+
+                
                   return
             }else if  (this.gameStatus === 'draw'){
                     this.gameStatusColor = 'statusDraw'
+
+                    this.gameStatusMessage = 'Draw !'
+
                     return
             }
                     this.gameStatusMessage = `${this.activePlayer}'s turn`
@@ -130,11 +135,11 @@ import Cell from './Cell.vue'
 
         // returns the game status to the gameStatus property
         changeGameStatus(){
-                if( this.checkForWin()){
+                if(this.checkForWin()){
                       return this.gameIsWon()
                 // checks if the game is still not won and all cells are filled
 
-              }else if ( his.moves === 9){
+              }else if (this.moves === 9){
                       //sets the status to draw
                       return 'draw'
               }
@@ -161,7 +166,7 @@ import Cell from './Cell.vue'
 
         Event.$on('strike', (cellNumber) => {
                 //sets either X or O in the clicked cell of the cells array
-                this.cells[cellNumber] = this.nonActivePlayer
+                this.cells[cellNumber] = this.activePlayer
 
                 //increments the number of moves
                 this.moves++
