@@ -3,6 +3,6 @@
  import books from './bookReducers'
 
  export default combineReducers({
-   books: books;
-   
+   books: books
+
  });

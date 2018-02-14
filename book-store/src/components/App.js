@@ -11,19 +11,19 @@ const App = (props) => {
           </div>
           <div className="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
             <ul> className="nav navbar-nav">
-              <li><Link to="/">Home</Link></li>
-              <li><Link to="about">About</Link></li>
-              <li><Link to="books">Books</Link></li>
-              <li><Link to="cart">Cart</Link></li>
+              <li><a href="/">Home</a></li>
+              <li><a href="about">About</a></li>
+              <li><a href="books">Books</a></li>
+              <li><a href="cart">Cart</a></li>
             </ul>
           </div>
         </div>
       </nav>
       {/* Each smaller components*/}
-      {props.children}
+      {this.props.children}
     </div>
 
   );
 };
 
-export default App
+export default App;
