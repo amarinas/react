@@ -56,4 +56,6 @@ function configureStoreDev(initialState) {
 
 const configureStore = process.env.NODE_ENV === 'production' ? configureStoreProd : configureStoreDev;
 
-export default configureStore;
+export default function configureStore(initialState){
+  return createStore(rootReducer, initialState);
+}
