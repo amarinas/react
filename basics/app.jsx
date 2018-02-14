@@ -58,7 +58,7 @@ function Application(props) {
 
           </div>
 
-
+        </div>
 
    </div>
   );
