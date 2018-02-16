@@ -1,14 +1,35 @@
 import React, { Component } from 'react';
-import logo from './logo.svg';
 import './App.css';
 
 class App extends Component {
+
+  state = {
+    guests: [
+      {
+        name: 'John',
+        isConfirmed: false,
+
+      },
+      {
+        name: 'Dude',
+        isConfirmed: true,
+
+      }
+    ]
+  }
+
+  getTotalInvited = () => this.state.guests.length;
+  // getAttendingGuests = () =>
+
+  //getUnconfirmedGuests = () =>
+
+  
   render() {
     return (
       <div className="App">
         <header>
           <h1>RSVP</h1>
-          <p>A Treehouse App</p>
+          <p>A Reservation Application</p>
           <form>
               <input type="text" value="Safia" placeholder="Invite Someone" />
               <button type="submit" name="submit" value="submit">Submit</button>
@@ -18,7 +39,7 @@ class App extends Component {
           <div>
             <h2>Invitees</h2>
             <label>
-              <input type="checkbox" /> Hide those who haven't responded
+              <input type="checkbox" /> Hide those who havent responded
             </label>
           </div>
           <table className="counter">
