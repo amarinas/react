@@ -1,7 +1,7 @@
 import React from 'react';
 
 
-const GuestList = props => {
+const GuestList = props =>
 
   <ul>
     <li className="pending"><span>Safia</span></li>
@@ -30,5 +30,5 @@ const GuestList = props => {
     </li>
   </ul>
 
-}
+
 export default GuestList;
