@@ -9,13 +9,19 @@ class App extends Component {
       {
         name: 'John',
         isConfirmed: false,
+        isEditing: false
 
       },
       {
         name: 'Dude',
         isConfirmed: true,
-
-      }
+        isEditing: false
+      },
+      {
+        name: 'mike',
+        isConfirmed: false,
+        isEditing: true
+      },
     ]
   }
 
@@ -24,6 +30,31 @@ class App extends Component {
 
   //getUnconfirmedGuests = () =>
 
+
+  toggleConfirmationAt = indexToChange =>
+    this.setState({
+      guests: this.state.guests.map((guest, index) => {
+        if (index === indexToChange){
+          return{
+            ...guest,
+            isConfirmed: !guest.isConfirmed
+          };
+        }
+        return guest;
+      })
+    });
+
+    toggleGuestPropertyAt = (property, indexToChange) =>
+      this.state({
+        guests: this.state.guests.map((guest, index) => {
+          if (index === indexToChange) {
+            return {
+              ...guest,
+              [property]: !guest[property]
+            }
+          }
+        })
+      })
 
   render() {
     return (
@@ -59,7 +90,8 @@ class App extends Component {
               </tr>
             </tbody>
           </table>
-          <GuestList />
+          <GuestList guests={this.state.guests}
+          toggleConfirmationAt={this.toggleConfirmationAt} />
         </div>
       </div>
     );
