@@ -39,7 +39,7 @@ new Vue({
   el: '#app',
 
   // pass the template to the root component
-  template: '<App/>',
+  template: '',
 
   // declare components that the root component can access
   components: { App },
