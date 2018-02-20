@@ -1,7 +1,7 @@
 <template>
   <div id="app">
-    <img src="./assets/logo.png">
-    <router-view/>
+    <!-- the router outlet, where all matched components would be viewed -->
+    <router-view></router-view>
   </div>
 </template>
 
